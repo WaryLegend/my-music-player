@@ -1,38 +1,659 @@
-.App {
-  text-align: center;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
-
-.App-logo {
-  height: 40vmin;
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(220deg, #9a1d86, #1595be);
+}
+/*Main music player board*/
+.app {
+  position: relative;
+  min-width: 350px;
+  max-width: 400px;
+  color: rgb(26, 50, 48);
+}
+.dash-board {
+  overflow: hidden;
+  border: 1px solid transparent;
+  padding: 16px 20px 15px;
+  border-radius: 20px;
+  background: url(./image/white-music-background.png);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+.menu,
+.music-list .header,
+.music-list li,
+.info,
+.Album_header,
+.Album_Board li1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.menu button {
+  font-size: 20px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.Start {
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0.9;
   pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* DISC + song_name + artist */
+.music-info {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+/* disc_shadow and disc_spin */
+.DISC {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 5px;
+}
+.disc_shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 3px 9px 1px rgb(45, 34, 34);
+  border-radius: 50%;
+  z-index: 1;
+}
+.disc_spin {
+  height: 220px;
+  width: 220px;
+  border: 2px solid #fffafa;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  transition: cubic-bezier(0, 0, 0, 0) 0.4s;
+  z-index: 1;
+}
+.song_name,
+.artist {
+  text-align: center;
+  text-transform: capitalize;
+  pointer-events: none;
+}
+.song_name {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-top: 5px;
+}
+.artist {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 5px;
+}
+/* current time & song duration + song slider, volume slider of the song*/
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.current_time,
+.song_duration {
+  color: #919191;
+  font-size: 14px;
+}
+.seek_slider,
+.volume_slider {
+  appearance: none;
+  height: 5px;
+  background: rgba(137, 190, 208, 0.737);
+  border-radius: 20px;
+  transition: 0.2s;
+}
+.seek_slider::-webkit-slider-thumb,
+.volume_slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  background: rgb(255, 255, 255);
+  border: 3px solid rgb(65, 154, 213);
+  cursor: pointer;
+  border-radius: 40%;
+}
+.seek_slider {
+  width: 80%;
+}
+.volume_slider {
+  width: 30%;
+}
+.current_time,
+.song_duration {
+  padding: 10px;
+}
+.fa-volume-down,
+.fa-volume-up {
+  padding: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
+/* All functioning buttons*/
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.shuffle_song,
+.prev_song,
+.play_pause,
+.next_song,
+.repeat_song {
+  margin: 15px;
+  opacity: 0.8;
+  font-size: 27px;
+  background: linear-gradient(200deg, rgb(20, 20, 20), rgb(154, 154, 154));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.play_pause {
+  font-size: 40px;
+}
+.repeat_song {
+  position: relative;
+}
+
+.shuffle_song:hover,
+.prev_song:hover,
+.play_pause:hover,
+.next_song:hover,
+.repeat_song:hover,
+.menu i:hover {
+  opacity: 1;
+}
+
+.active {
+  color: #007efd;
+}
+.disc_spin.rotate {
+  animation: rotation 12s infinite linear;
+  animation-play-state: running;
+}
+.disc_spin.rotate.paused {
+  animation-play-state: paused;
+}
+
+@keyframes rotation {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+}
+/* animation for sound wave */
+.run {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+}
+.cane {
+  background: #f1f1f1;
+  height: 100%;
+  width: 8px;
+  border-radius: 50px;
+  margin: 0px 5px;
+  animation: wave 1s linear infinite;
+}
+@keyframes wave {
+  50% {
+    transform: scaleY(0.3);
+    background: #4286f4;
+  }
+  100% {
+    transform: scaleY(1);
+    background: #4286f4;
+  }
+}
+
+.cane:nth-child(1) {
+  animation-delay: 0s;
+}
+.cane:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.cane:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.cane:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.cane:nth-child(5) {
+  animation-delay: 1.2s;
+}
+.cane:nth-child(6) {
+  animation-delay: 0.9s;
+}
+.cane:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.cane:nth-child(8) {
+  animation-delay: 0.3s;
+}
+.cane:nth-child(9) {
+  animation-delay: 0s;
+}
+/*create a music list and "Add song" button*/
+.music-list {
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  pointer-events: none;
+  background: url(./image/white-music-background.png);
+  background-size: cover;
+  padding: 15px 18px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 10px;
+  transition: all 0.1s ease-in-out;
+}
+
+.music-list.show {
+  height: 75%;
+  opacity: 0.965;
+  pointer-events: auto;
+  z-index: 2;
+}
+.header .title {
+  font-size: 17px;
+  font-weight: bold;
+  color: #1f4867;
+}
+.title i,
+.title {
+  cursor: default;
+}
+.header .title span {
+  margin-left: 5px;
+}
+/* Each song in the list */
+.music-list ul {
+  margin: 10px 0 10px 0;
+  height: calc(100% - 30px);
+  overflow: auto;
+}
+.music-list ul::-webkit-scrollbar {
+  width: 0%;
+}
+.music-list li {
+  list-style: none;
+  padding: 0px 5px 10px 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #bababa;
+  border-radius: 5px;
+  transition: all 0.4s;
+}
+.music-list li:hover {
+  background: #c7c7c7;
+}
+.music-list li:last-child {
+  border-bottom: 0px;
+}
+
+/*music-info and buttons fuction in each song*/
+.info {
+  position: relative;
+}
+.No {
+  font-weight: bold;
+  pointer-events: none;
+}
+.info .fa-play,
+.info .fa-pause {
+  position: absolute;
+  text-align: center;
+  color: transparent;
+  cursor: pointer;
+  font-size: large;
+}
+.fa-play,
+.fa-pause,
+.fa-heart,
+.fa-xmark {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.row {
+  margin-left: 15px;
+  pointer-events: none;
+}
+.row span {
+  font-size: 17px;
+  font-weight: bold;
+}
+.row p {
+  font-size: 15px;
+  opacity: 0.8;
+}
+.options {
+  display: flex;
+  font-size: large;
+  justify-content: space-between;
+  gap: 10px;
+}
+.options button {
+  font-size: large;
+}
+
+li:hover .No,
+li .fa-heart {
+  color: transparent;
+}
+li:hover .fa-regular.fa-heart,
+li:hover .fa-play,
+li:hover .fa-pause {
+  color: rgb(26, 50, 48);
+}
+.fa-play:hover,
+.fa-pause:hover,
+.fa-heart:hover,
+.fa-xmark:hover {
+  opacity: 1;
+}
+.fa-heart.On {
+  color: #007efd;
+}
+
+/* Style the custom file upload button */
+#songFiles {
+  display: none;
+}
+.custom-file-upload {
+  background: linear-gradient(200deg, rgb(47, 77, 244), rgb(142, 142, 142));
+  padding: 5px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.4s;
+}
+.custom-file-upload:hover {
+  opacity: 1;
+}
+
+/*Albums Tab*/
+.fa-spotify {
+  position: fixed;
+  padding: 8px;
+  border-radius: 50%;
+  top: 30px;
+  left: 5px;
+  z-index: 3;
+  background: linear-gradient(
+    220deg,
+    rgba(255, 255, 255, 0.867),
+    rgb(231, 231, 231)
+  );
+  font-size: 20px;
+  cursor: pointer;
+  color: rgb(26, 50, 48);
+  box-shadow: rgba(0, 0, 0, 0.375) 0 3px 5px 0;
+  transition: 0.35s ease-in;
+}
+.fa-spotify.show {
+  left: 265px;
+  transition: 0.35s ease-out;
+}
+
+.Album_Tab {
+  position: fixed;
+  top: 30px;
+  min-height: 90vh;
+  max-height: 90vh;
+  left: -260px;
+  width: 260px;
+  z-index: 2;
+  border-radius: 0 20px 20px 0;
+  background: linear-gradient(
+    220deg,
+    rgba(255, 255, 255, 0.935),
+    rgb(213, 212, 212)
+  );
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  display: flex;
+  justify-content: center;
+  transition: 0.35s ease-in;
+  opacity: 0;
+}
+.Album_Tab.show {
+  left: 0px; /* Hidden outside the screen */
+  opacity: 1;
+  transition: 0.35s ease-out;
+}
+
+.Album_Tab alb {
+  list-style: none;
+  margin: 20px 0 20px 0;
+  overflow: auto;
+}
+.pic {
+  height: 60px;
+  width: 60px;
+  position: relative;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+la,
+plus {
+  margin-bottom: 25px;
+  padding: 10px;
+  height: 90px;
+  width: 210px;
+  border: 2px solid rgb(156, 83, 164);
+  background: rgb(217, 217, 217);
+  border-radius: 10px;
+  font-size: 18px;
+  color: rgb(87, 86, 86);
+  font-weight: bold;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+plus {
+  height: 60px;
+  width: 210px;
+  background: linear-gradient(
+    180deg,
+    rgba(85, 66, 224, 0.657),
+    rgba(146, 170, 215, 0.838)
+  );
+  justify-content: center;
+}
+la:hover,
+plus:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(40, 18, 211, 0.838),
+    rgba(146, 170, 215, 0.838)
+  );
+  color: white;
+}
+.Album_Tab alb::-webkit-scrollbar {
+  width: 0%;
+}
+/*Album Board*/
+.Album_Board {
+  position: fixed;
+  height: 80vh;
+  z-index: 1;
+  width: 380px;
+  top: 80px;
+  left: -380px;
+  border-radius: 0 20px 20px 0;
+  background: url(./image/white-music-background.png);
+  background-size: cover;
+  opacity: 0;
+  padding: 15px 18px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  transition: 0.2s ease-in;
+  display: flex;
+  flex-direction: column;
+}
+.Album_Board.show {
+  left: 260px;
+  transition: 0.2s ease-out;
+  opacity: 0.95;
+}
+.Album_title {
+  font-size: 25px;
+  font-weight: bold;
+  color: #1f4867;
+  cursor: default;
+}
+.Album_title i {
+  cursor: pointer;
+}
+.Album_title span {
+  margin-left: 5px;
+}
+/*Style the custom file upload in album*/
+#albumFiles {
+  display: none;
+}
+.custom-album-upload {
+  background: linear-gradient(200deg, rgb(47, 77, 244), rgb(142, 142, 142));
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: all 0.3s;
+}
+.custom-album-upload:hover {
+  opacity: 1;
+}
+/* Each song in the album */
+.Album_Board ul1 {
+  margin: 10px 0 10px 0;
+  overflow: auto;
+}
+.Album_Board ul1::-webkit-scrollbar {
+  width: 0%;
+}
+.Album_Board li1 {
+  list-style: none;
+  padding: 0px 5px 10px 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid #bababa;
+  border-radius: 5px;
+  transition: all 0.4s;
+}
+.Album_Board li1:hover {
+  background: #c7c7c7;
+}
+.Album_Board li1:last-child {
+  border-bottom: 0px;
+}
+/*music-info and buttons fuction in each song in album*/
+/*info, No,... using the same as music list*/
+
+li1:hover .No,
+li1 .fa-heart {
+  color: transparent;
+}
+li1:hover .fa-regular.fa-heart,
+li1:hover .fa-play,
+li1:hover .fa-pause {
+  color: rgb(26, 50, 48);
+}
+
+/*Customized the text enter form for new album name*/
+#CreateAlbumForm {
+  display: none;
+  top: 140px;
+  left: 265px;
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background: linear-gradient(
+    220deg,
+    rgba(255, 255, 255, 0.935),
+    rgb(213, 212, 212)
+  );
+  position: fixed;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 10px 38px,
+    rgba(0, 0, 0, 0.22) 0px 10px 12px;
+  justify-content: space-between;
+  opacity: 0.98;
+}
+#CreateAlbumForm form {
+  display: flex;
+}
+#CreateAlbumForm label {
+  display: block;
+  margin-bottom: 5px;
+}
+#CreateAlbumForm input {
+  width: 60%;
+  height: 40px;
+  padding: 8px;
+  box-sizing: border-box;
+  font-size: large;
+}
+#CreateAlbumForm button {
+  background: linear-gradient(220deg, rgb(23, 207, 23), rgb(20, 163, 20));
+  color: white;
+  font-size: large;
+  font-weight: bold;
+  height: 40px;
+  padding: 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#CreateAlbumForm img {
+  max-width: 40px;
+  max-height: 40px;
+  margin-left: 5px;
+  border-radius: 5px;
+  height: auto;
+}
+#albumImage {
+  display: none;
+}
+#ChooseImage {
+  background: linear-gradient(220deg, rgb(203, 203, 203), rgb(130, 136, 130));
+  color: black;
+  width: 20%;
+  height: 40px;
+  font-size: large;
+  font-weight: bold;
+  padding: 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
