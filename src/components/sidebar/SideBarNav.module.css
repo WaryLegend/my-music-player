@@ -1,0 +1,32 @@
+a {
+  text-decoration: none !important;
+}
+
+.nav-body {
+  height: 60px;
+  width: 60px;
+  border-radius: 20px;
+  color: rgb(212, 212, 212);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto;
+  background-color: rgba(236, 236, 236, 0);
+  transition: all 0.3s ease;
+}
+.nav-body:hover {
+  color: white;
+}
+
+a.active {
+  background-color: rgba(236, 236, 236, 0.286);
+  color: white;
+  transform: scale(1.1);
+}
+
+.nav-title {
+  margin: 4px auto;
+  font-weight: 600;
+  font-size: 13px;
+}

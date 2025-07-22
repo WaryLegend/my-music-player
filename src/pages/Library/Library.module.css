@@ -1,0 +1,107 @@
+.library-body {
+  max-height: 93%;
+  padding: 1%;
+  margin: 1%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+/* Scrollbar track */
+.library-body::-webkit-scrollbar {
+  width: 5px;
+}
+/* Scrollbar handle */
+.library-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(200deg, #a96d9f, #66a3b7);
+  border-radius: 4px;
+}
+/* Scrollbar handle on hover */
+.library-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(200deg, #993789, #3a98b8);
+}
+/* Scrollbar track background */
+.library-body::-webkit-scrollbar-track {
+  background: #2e4670;
+}
+
+@media (max-width: 600px) {
+  .library-body {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+    margin: 5%;
+  }
+}
+
+.playlist-card {
+  position: relative;
+  border-radius: 20px;
+  border: 1px solid rgba(235, 235, 235, 0.18);
+  padding: 5%;
+  background: linear-gradient(
+    75deg,
+    rgb(46, 79, 136) 0%,
+    rgba(54, 69, 98, 0) 100%
+  );
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.2s ease;
+}
+
+.playlist-card:hover {
+  transform: scale(1.02);
+}
+
+.playlist-card:hover .playlist-fade {
+  opacity: 1;
+}
+
+.playlist-image {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.playlist-title {
+  font-weight: 800;
+  font-size: 16px;
+  color: white;
+  margin: 10px 0px 5px;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.playlist-subtitle {
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0px;
+  color: white;
+}
+
+.playlist-fade {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  width: 84%;
+  height: 34%;
+  border-radius: 20px;
+  background: linear-gradient(
+    180deg,
+    rgba(167, 180, 205, 0) 10%,
+    rgba(104, 157, 237, 0.75) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 8%;
+  transition: 0.5s ease;
+}

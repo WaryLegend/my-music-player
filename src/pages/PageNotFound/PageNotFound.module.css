@@ -1,0 +1,17 @@
+.notfound {
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.notfound h1 {
+  font-size: 2.5rem;
+  color: white;
+  line-height: 1.3;
+}
