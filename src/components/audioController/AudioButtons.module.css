@@ -1,0 +1,49 @@
+.buttonsRow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  @media (min-width: 600px) {
+    gap: 25px;
+  }
+}
+
+.iconBtn,
+.playBtn {
+  background: none;
+  padding: 0;
+  border: none;
+  opacity: 0.8;
+  color: var(--color-grey-0);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  &:hover {
+    opacity: 1;
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+.playBtn {
+  font-size: 1.5rem;
+}
+
+.active {
+  color: var(--color-blue-500);
+}
+
+@media (min-width: 600px) {
+  .iconBtn {
+    font-size: 1.5rem;
+  }
+  .playBtn {
+    font-size: 2rem;
+  }
+}
+
+.isLiked {
+  color: var(--color-green-700);
+}

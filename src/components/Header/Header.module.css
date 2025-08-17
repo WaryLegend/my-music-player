@@ -1,0 +1,46 @@
+.body {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-grey-0);
+}
+
+.box {
+  margin: 0;
+  background: rgba(46, 63, 93, 0.9);
+  border-radius: 30px;
+  border: 1px solid rgba(62, 87, 129, 0.9);
+  padding: 5px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+
+  @media (min-width: 600px) {
+    padding: 10px;
+  }
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  opacity: 0.8;
+  color: var(--color-grey-0);
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  &:hover {
+    opacity: 1;
+  }
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  @media (min-width: 600px) {
+    font-size: 1.5rem;
+  }
+}

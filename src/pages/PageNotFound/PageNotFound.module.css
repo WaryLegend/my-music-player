@@ -1,0 +1,36 @@
+.notfound {
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.center {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.notfound h1 {
+  font-size: 2.5rem;
+  color: white;
+  line-height: 1.3;
+}
+
+.btn-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  font-size: 18px;
+  opacity: 0.8;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
