@@ -19,6 +19,7 @@
 /* Current song info */
 .cursong-body {
   position: relative;
+  max-width: 400px;
   display: flex;
   align-items: center;
   margin: auto;
@@ -84,13 +85,30 @@
 .cursong-body p {
   margin: 0;
   font-size: smaller;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 700px) {
+    white-space: nowrap;
+  }
 }
-p.song-title {
+.song-title {
   font-weight: 600;
-  white-space: nowrap;
 }
-p.song-subtitle {
-  color: rgba(250, 250, 250, 0.8);
+.song-subtitle {
+  color: var(--color-grey-200);
+  opacity: 0.9;
+}
+@media (min-width: 700px) {
+  .song-title,
+  .song-subtitle {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
 }
 
 .add-btn-ct {

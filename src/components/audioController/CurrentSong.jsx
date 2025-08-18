@@ -19,12 +19,14 @@ function CurrentSong() {
       />
       <div className={styles["song-info"]}>
         <p className={styles["song-title"]}>
-          {curSong ? curSong.name : "Song name"}
+          <span>{curSong ? curSong.name : "Song name"}</span>
         </p>
         <p className={styles["song-subtitle"]}>
-          {curSong
-            ? curSong.artists?.map((artist) => artist.name).join(", ")
-            : "_____"}
+          <span>
+            {curSong
+              ? curSong.artists?.map((artist) => artist.name).join(", ")
+              : "_____"}
+          </span>
         </p>
       </div>
       <div className={styles["add-btn-ct"]}>

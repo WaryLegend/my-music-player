@@ -1,7 +1,8 @@
 import { generateCodeVerifier, generateCodeChallenge } from "../utils/pkce";
 
 const clientId = "50db403085e24b0cbd3ae6ab4e20fcf8";
-const redirectUri = "http://127.0.0.1:3000";
+const redirectUri = window.location.origin;
+// "https://fake-spotify-omega.vercel.app" || "http://127.0.0.1:3000";
 const scopes = [
   "user-library-read",
   "user-library-modify",
