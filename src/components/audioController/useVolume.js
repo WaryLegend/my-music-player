@@ -4,7 +4,7 @@ import { useSongAudio } from "../../Hooks/useSongAudio";
 export function useVolume() {
   const audioRef = useSongAudio();
   const [volume, setVolumeState] = useState(
-    localStorage.getItem("volume-setting") || 1
+    parseFloat(localStorage.getItem("volume-setting")) || 1
   ); // 0 to 1 for audio
   const [isMuted, setIsMuted] = useState(false);
 
