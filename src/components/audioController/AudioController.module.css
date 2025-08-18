@@ -36,7 +36,7 @@
     outline: 2px solid var(--color-blue-500);
   }
 
-  @media (min-width: 700px) {
+  @media (min-width: 600px) {
     gap: 10px;
     padding: 10px;
   }
@@ -48,32 +48,36 @@
   object-fit: cover;
   border-radius: 10px;
 
-  @media (min-width: 700px) {
+  @media (min-width: 600px) {
     width: 50px;
   }
 }
 
-.cursong-body .song-info {
-  display: none;
+.song-info {
+  display: inline-block;
   position: absolute;
-  transform: translateX(-50%);
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  left: 50%;
+  bottom: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease 0.2s;
 
   @media (max-width: 700px) {
     .cursong-body:hover &,
     .cursong-body:focus & {
-      display: inline-block;
+      transform: translateX(-50%);
       padding: 10px;
-      bottom: 100%;
-      left: 50%;
-      min-width: 100px;
       border-radius: 10px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      box-shadow: var(--shadow-sm);
       background: rgba(33, 45, 67, 0.95);
+      opacity: 1;
+      visibility: visible;
     }
   }
 
   @media (min-width: 700px) {
+    opacity: 1;
+    visibility: visible;
     display: flex;
     flex-direction: column;
     justify-content: center;

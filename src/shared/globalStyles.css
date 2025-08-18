@@ -16,12 +16,17 @@
   --color-green-700-shadow: #1db954cd;
 
   --color-blue-500: #1f87e3;
+  --color-blue-800: #2e4670;
+
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+
+  --main-back-ground: linear-gradient(200deg, #9a1d86, #1595be);
 }
 
 .main-body {
   height: 100dvh;
   width: 100vw;
-  background: linear-gradient(200deg, #9a1d86, #1595be);
+  background: var(--main-back-ground);
   display: flex;
 }
 
@@ -33,7 +38,7 @@
   background-image: repeating-radial-gradient(
       circle at center left,
       transparent 0,
-      #2e4670 100px
+      var(--color-blue-800) 100px
     ),
     repeating-linear-gradient(#1e2a3e55, #1e2a3e);
   flex-grow: 1;

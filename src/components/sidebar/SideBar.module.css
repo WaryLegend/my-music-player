@@ -9,59 +9,60 @@
 }
 
 .profile {
-  margin-top: 15px;
+  margin: 15px auto;
+  width: 50px;
+  height: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative; /* Ensure positioning context for smooth transitions */
+  position: relative;
 }
 
-.profile img {
+.profile-avatar {
   width: 50px;
   height: 50px;
-  border-radius: 15px;
-  border: 2px solid var(--color-grey-0);
-  transition: transform 0.3s ease; /* Smooth scaling effect on hover */
+  border-radius: 50%;
+  border: 3px solid var(--color-grey-200);
+  transition: transform 0.3s ease;
 }
 
-.profile img:hover {
-  transform: scale(1.05); /* Slight zoom on image hover for visual feedback */
+.profile-avatar:hover {
+  transform: scale(1.05);
 }
 
 .profile p {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  word-wrap: break-word;
-  color: var(--color-grey-0);
-  margin: 0;
-  font-size: large;
+  position: absolute;
+  display: inline-block;
+  visibility: hidden;
+  opacity: 0;
+  font-size: medium;
   font-weight: 500;
+  color: var(--color-grey-200);
+  transition: opacity 0.3s ease 0.2s;
 
-  opacity: 0; /* Initially hidden */
-  visibility: hidden; /* Prevents interaction when hidden */
-  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out,
-    transform 0.4s ease-in-out;
-  transform: translateY(-10px); /* Start above, slide down */
-}
-
-.profile:hover p {
-  opacity: 1; /* Show p when hovering .profile (img or p) */
-  visibility: visible;
-  transform: translateY(0); /* Slide to final position */
+  .profile:hover &,
+  &:hover {
+    opacity: 1;
+    visibility: visible;
+    padding: 5px;
+    top: 75%;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+    background: rgba(33, 45, 67, 0.95);
+  }
 }
 
 @media (min-width: 600px) {
   .sidebar-container {
     min-width: 120px;
   }
-  .profile img {
+  .profile,
+  .profile-avatar {
     width: 60px;
     height: 60px;
   }
   .profile p {
-    font-size: larger;
+    font-size: large;
   }
 }

@@ -90,9 +90,9 @@ function AuthProvider({ children }) {
       if (!isAuthenticated) {
         return;
       }
+      dispatch({ type: "loading" });
       try {
         const data = await apiClient("me");
-        // console.log("FakeAuthContext.jsx: User data fetched =", data);
         dispatch({ type: "user/loaded", payload: data });
       } catch (err) {
         localStorage.removeItem("access_token");
