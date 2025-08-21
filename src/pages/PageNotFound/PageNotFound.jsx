@@ -9,12 +9,16 @@ export default function PageNotFound() {
   return (
     <div className={`main-body ${styles.center}`}>
       <div className={styles.notfound}>
-        <h1>Page not found 😢</h1>
-        <button className={styles["btn-back"]} onClick={() => navigate(-1)}>
-          <IconContext.Provider value={{ size: "24px" }}>
-            {<IoArrowBackOutline />}
+        <h1 className={styles.oops}>Oops!</h1>
+        <p className={styles.message}>404 - Page not found</p>
+        <button
+          className={styles["btn-back"]}
+          onClick={() => navigate("/", { replace: true })}
+        >
+          <IconContext.Provider value={{ size: "20px" }}>
+            <IoArrowBackOutline />
           </IconContext.Provider>
-          Go back
+          Go to home
         </button>
       </div>
     </div>

@@ -32,7 +32,7 @@ function AudioController() {
             right: "8%",
           }}
           length={100}
-          color="var(--color-blue-500)"
+          color="var(--color-blue-400)"
         />
       </SoundWave>
     </div>

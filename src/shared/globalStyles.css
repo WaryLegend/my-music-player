@@ -12,10 +12,14 @@
   --color-grey-800: #1f2937;
   --color-grey-900: #111827;
 
+  --color-green-600: #1ed760;
   --color-green-700: #1db954;
   --color-green-700-shadow: #1db954cd;
 
-  --color-blue-500: #1f87e3;
+  --color-blue-400: #1f87e3;
+  --color-blue-500: #1c74c2;
+  --color-blue-600: #1f5c91;
+  --color-blue-700: #264a87;
   --color-blue-800: #2e4670;
 
   --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);

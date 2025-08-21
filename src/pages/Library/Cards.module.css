@@ -52,7 +52,7 @@
   transition: all 0.2s ease;
 
   &:focus {
-    outline: 2px solid var(--color-blue-500);
+    outline: 2px solid var(--color-blue-400);
     outline-offset: 2px;
   }
 }
