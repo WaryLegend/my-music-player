@@ -21,7 +21,7 @@ const StyledSelect = styled.select`
   border-radius: 15px;
   background: #3b578b;
   font-weight: 500;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
   @media (min-width: 600px) {
     font-size: medium;
   }

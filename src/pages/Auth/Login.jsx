@@ -15,19 +15,21 @@ export default function Login() {
   }, [isAuthenticated, navigate]);
 
   return (
-    <div className={styles["login-page"]}>
-      <img
-        src="/Spotify_Logo_RGB_White.png"
-        alt="logo-spotify"
-        className={styles["logo"]}
-      />
-      {isLoading ? (
-        <SpinnerV2 />
-      ) : (
-        <button className={styles["login-btn"]} onClick={loginWithSpotify}>
-          <div>LOG IN</div>
-        </button>
-      )}
+    <div className="main-body">
+      <div className={styles["login-page"]}>
+        <img
+          src="/Spotify_Logo_RGB_White.png"
+          alt="logo-spotify"
+          className={styles["logo"]}
+        />
+        {isLoading ? (
+          <SpinnerV2 />
+        ) : (
+          <button className={styles["login-btn"]} onClick={loginWithSpotify}>
+            <div>LOG IN</div>
+          </button>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
 import styles from "./SideBarNav.module.css";
+import { memo } from "react";
 
 function SideBarNav({ titles, to, icon }) {
   return (
@@ -16,4 +17,4 @@ function SideBarNav({ titles, to, icon }) {
   );
 }
 
-export default SideBarNav;
+export default memo(SideBarNav);

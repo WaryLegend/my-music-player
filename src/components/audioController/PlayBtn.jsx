@@ -1,12 +1,12 @@
 /* eslint-disable react/prop-types */
-import { useSongState } from "../../Hooks/useSongState";
+import { usePlayback } from "../../Hooks/usePlayback";
 import { FaPause, FaPlay } from "react-icons/fa";
 import IconButton from "../Button/IconButton";
 import toast from "react-hot-toast";
 import { useSongActions } from "../../Hooks/useSongActions";
 
 function PlayBtn({ styles }) {
-  const { curSong, isPlayed } = useSongState();
+  const { curSong, isPlayed } = usePlayback();
   const { playCurSong } = useSongActions();
 
   function handlePlaySong(boolen) {

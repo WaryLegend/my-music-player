@@ -98,9 +98,10 @@
 }
 .song-title {
   font-weight: 600;
+  color: var(--color-grey-100);
 }
 .song-subtitle {
-  color: var(--color-grey-200);
+  color: var(--color-grey-300);
   opacity: 0.9;
 }
 @media (min-width: 700px) {

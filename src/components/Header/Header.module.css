@@ -5,6 +5,13 @@
   align-items: center;
   color: var(--color-grey-0);
 }
+.ct {
+  display: flex;
+  gap: 5px;
+  @media (min-width: 600px) {
+    gap: 10px;
+  }
+}
 
 .box {
   margin: 0;

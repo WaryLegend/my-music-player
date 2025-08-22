@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import { useSongState } from "../../Hooks/useSongState";
+import { useModeState } from "../../Hooks/useModeState";
 import { useSongActions } from "../../Hooks/useSongActions";
 import { FaRepeat } from "react-icons/fa6";
 import IconButton from "../Button/IconButton";
 
 function RepeatBtn({ styles }) {
-  const { isRepeated } = useSongState();
+  const { isRepeated } = useModeState();
   const { setIsRepeated } = useSongActions();
 
   return (

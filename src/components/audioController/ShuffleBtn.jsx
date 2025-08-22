@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import { useSongActions } from "../../Hooks/useSongActions";
-import { useSongState } from "../../Hooks/useSongState";
+import { useModeState } from "../../Hooks/useModeState";
 import { FaRandom } from "react-icons/fa";
 import IconButton from "../Button/IconButton";
 
 function ShuffleBtn({ styles }) {
-  const { isShuffled } = useSongState();
+  const { isShuffled } = useModeState();
   const { setIsShuffled } = useSongActions();
 
   return (

@@ -12,7 +12,8 @@ SongProvider.propTypes = {
   children: PropTypes.node,
 };
 
-const SongStateContext = createContext();
+const PlaybackStateContext = createContext();
+const ModeStateContext = createContext();
 const SongActionsContext = createContext();
 const SongAudioContext = createContext();
 const PlayListContext = createContext();
@@ -78,21 +79,21 @@ function SongProvider({ children }) {
     dispatch({ type: "playlist/loaded", payload: playlist });
   }, []);
 
-  function setCurSong(song) {
+  const setCurSong = useCallback((song) => {
     dispatch({ type: "curSong/loaded", payload: song });
-  }
+  }, []);
 
-  function playCurSong(boolean) {
+  const playCurSong = useCallback((boolean) => {
     dispatch({ type: "curSong/played", payload: boolean });
-  }
+  }, []);
 
-  function setIsShuffled() {
+  const setIsShuffled = useCallback(() => {
     dispatch({ type: "curSong/shuffled" });
-  }
+  }, []);
 
-  function setIsRepeated() {
+  const setIsRepeated = useCallback(() => {
     dispatch({ type: "curSong/repeated" });
-  }
+  }, []);
 
   function setError(error) {
     dispatch({ type: "error", payload: error });
@@ -215,15 +216,14 @@ function SongProvider({ children }) {
     }
   }, [isPlayed, curSong]);
 
-  const stateValue = useMemo(
-    () => ({
-      curSong,
-      isPlayed,
-      isShuffled,
-      isRepeated,
-      error,
-    }),
-    [curSong, isPlayed, isShuffled, isRepeated, error]
+  const playbackValue = useMemo(
+    () => ({ curSong, isPlayed, error }),
+    [curSong, isPlayed, error]
+  );
+
+  const modeValue = useMemo(
+    () => ({ isShuffled, isRepeated }),
+    [isShuffled, isRepeated]
   );
 
   const actionsValue = {
@@ -242,21 +242,24 @@ function SongProvider({ children }) {
   );
 
   return (
-    <SongStateContext.Provider value={stateValue}>
-      <SongActionsContext.Provider value={actionsValue}>
-        <SongAudioContext.Provider value={audioRef}>
-          <PlayListContext.Provider value={playList}>
-            {children}
-          </PlayListContext.Provider>
-        </SongAudioContext.Provider>
-      </SongActionsContext.Provider>
-    </SongStateContext.Provider>
+    <PlaybackStateContext.Provider value={playbackValue}>
+      <ModeStateContext.Provider value={modeValue}>
+        <SongActionsContext.Provider value={actionsValue}>
+          <SongAudioContext.Provider value={audioRef}>
+            <PlayListContext.Provider value={playList}>
+              {children}
+            </PlayListContext.Provider>
+          </SongAudioContext.Provider>
+        </SongActionsContext.Provider>
+      </ModeStateContext.Provider>
+    </PlaybackStateContext.Provider>
   );
 }
 
 export {
   SongProvider,
-  SongStateContext,
+  PlaybackStateContext,
+  ModeStateContext,
   SongActionsContext,
   SongAudioContext,
   PlayListContext,

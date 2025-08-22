@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useSongState } from "../../Hooks/useSongState";
+import { usePlayback } from "../../Hooks/usePlayback";
 import styles from "./SoundWave.module.css";
 
 const Waves = ({ length = 40, color = "#1db954" }) => (
@@ -19,7 +19,7 @@ const Waves = ({ length = 40, color = "#1db954" }) => (
 );
 
 function SoundWave({ children }) {
-  const { isPlayed } = useSongState();
+  const { isPlayed } = usePlayback();
 
   return <>{isPlayed && children}</>;
 }

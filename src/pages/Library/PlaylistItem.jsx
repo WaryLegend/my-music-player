@@ -2,15 +2,16 @@
 import { AiFillPauseCircle, AiFillPlayCircle } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import { useParams } from "react-router-dom";
-import { useSongState } from "../../Hooks/useSongState";
+import { usePlayback } from "../../Hooks/usePlayback";
 import { useSongActions } from "../../Hooks/useSongActions";
 import { usePlayList } from "../../Hooks/usePlayList";
 import styles from "./Cards.module.css";
 import SoundWave from "../../components/soundwave/SoundWave";
 import toast from "react-hot-toast";
+import { memo } from "react";
 
 function PlaylistItem({ song, sortedData }) {
-  const { curSong, isPlayed } = useSongState();
+  const { curSong, isPlayed } = usePlayback();
   const { setCurSong, playCurSong } = useSongActions();
   const { curPlayList, setPlayList } = usePlayList();
 
@@ -82,4 +83,4 @@ function PlaylistItem({ song, sortedData }) {
   );
 }
 
-export default PlaylistItem;
+export default memo(PlaylistItem);

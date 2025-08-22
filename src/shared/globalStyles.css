@@ -21,10 +21,15 @@
   --color-blue-600: #1f5c91;
   --color-blue-700: #264a87;
   --color-blue-800: #2e4670;
+  --color-blue-900: #1e2a3e;
 
   --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0px 0.6rem 2.4rem rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 2.4rem 3.2rem rgba(0, 0, 0, 0.12);
 
   --main-back-ground: linear-gradient(200deg, #9a1d86, #1595be);
+
+  --border-rad-md: 30px;
 }
 
 .main-body {
@@ -34,22 +39,25 @@
   display: flex;
 }
 
-.screen-container {
+.outlet-container {
   height: 100%;
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  background-color: #1e2a3e;
+  border-top-left-radius: var(--border-rad-md);
+  border-bottom-left-radius: var(--border-rad-md);
+  background-color: var(--color-blue-900);
+  box-shadow: var(--shadow-md);
   background-image: repeating-radial-gradient(
       circle at center left,
       transparent 0,
       var(--color-blue-800) 100px
     ),
-    repeating-linear-gradient(#1e2a3e55, #1e2a3e);
+    repeating-linear-gradient(#1e2a3e55, var(--color-blue-900));
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   padding: 8px;
   box-sizing: border-box;
+  transition: border-top-left-radius 0.3s ease,
+    border-bottom-left-radius 0.3s ease;
 
   @media (min-width: 600px) {
     padding: 10px;

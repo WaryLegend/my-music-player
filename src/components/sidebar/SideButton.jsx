@@ -2,7 +2,7 @@
 import { IconContext } from "react-icons";
 import styles from "./SideButton.module.css";
 function SideButton({
-  titles = "",
+  titles,
   icon = null,
   size = "",
   color = "",

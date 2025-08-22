@@ -22,9 +22,10 @@ function generateColor(seed) {
 
 // Avatar fallback
 export default function DefaultAvatar({ name }) {
-  const displayName = name || "U";
-  const letter = displayName[0].toUpperCase();
-  const bgColor = generateColor(displayName);
+  if (!name) return;
+
+  const letter = name[0].toUpperCase();
+  const bgColor = generateColor(name);
 
   return (
     <div

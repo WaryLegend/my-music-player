@@ -1,11 +1,28 @@
 .sidebar-container {
-  min-width: 85px;
+  width: 85px; /* Changed from flex-basis */
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  transition: width 0.3s ease, opacity 0.3s ease;
+  overflow: hidden;
+  opacity: 1;
   flex-shrink: 0;
+
+  @media (min-width: 600px) {
+    width: 120px;
+  }
+}
+/* when sidebar closed --> border-radius of outlet-ct set to 0px */
+.closed {
+  width: 0;
+  opacity: 0;
+}
+
+.closed:global(+ .outlet-container) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .profile {
@@ -17,6 +34,10 @@
   align-items: center;
   justify-content: center;
   position: relative;
+
+  @media (min-width: 600px) {
+    font-size: large;
+  }
 }
 
 .profile-avatar {
@@ -54,9 +75,6 @@
 }
 
 @media (min-width: 600px) {
-  .sidebar-container {
-    min-width: 120px;
-  }
   .profile,
   .profile-avatar {
     width: 60px;

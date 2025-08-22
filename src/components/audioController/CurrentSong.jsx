@@ -1,9 +1,9 @@
-import { useSongState } from "../../Hooks/useSongState";
+import { usePlayback } from "../../Hooks/usePlayback";
 import styles from "./AudioController.module.css";
 import AddRemoveTrack from "./AddRemoveTrack";
 
 function CurrentSong() {
-  const { curSong } = useSongState();
+  const { curSong } = usePlayback();
 
   if (!curSong) return;
 

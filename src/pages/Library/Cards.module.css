@@ -85,7 +85,7 @@
 .song-title {
   font-weight: 800;
   font-size: large;
-  color: var(--color-grey-0);
+  color: var(--color-grey-100);
   margin: 10px 0px 5px;
   display: -webkit-box;
   overflow: hidden;
