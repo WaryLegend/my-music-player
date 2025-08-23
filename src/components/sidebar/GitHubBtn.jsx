@@ -10,7 +10,7 @@ function GitHubBtn() {
       icon={<FaGithub />}
       onClick={() => {
         window.open(
-          "https://github.com/WaryLegend",
+          "https://github.com/WaryLegend/my-music-player",
           "_blank",
           "noopener,noreferrer"
         );
